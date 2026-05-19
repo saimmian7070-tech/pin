@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import data from "../data";
 
-// SAFE FIX: handles both array and {articles: []} formats
+// SAFE FIX: handles empty data
 const articles = Array.isArray(data) ? data : data?.articles || [];
 
 export default function Blog() {
@@ -14,7 +14,7 @@ export default function Blog() {
       </h1>
 
       <p style={{ color: "#555", lineHeight: "1.8" }}>
-        Welcome to a Pinterest-style space for colorful nail designs, aesthetic inspiration,
+        Welcome to Stylesaura — a Pinterest-inspired space for colorful nail designs, aesthetic inspiration,
         and viral nail trends that are taking over TikTok and Instagram right now.
       </p>
 
@@ -28,35 +28,39 @@ export default function Blog() {
         💅 Latest Nail Inspo
       </h2>
 
-      {/* BLOG LIST */}
-      {articles.map((post, index) => (
-        <div
-          key={index}
-          style={{
-            marginBottom: "25px",
-            paddingBottom: "20px",
-            borderBottom: "1px solid #eee"
-          }}
-        >
+      {/* BLOG LIST — only render if there are articles */}
+      {articles.length === 0 ? (
+        <p style={{ color: "#777", fontStyle: "italic", lineHeight: "1.7" }}>
+          No posts yet — new nail inspo coming soon! ✨
+        </p>
+      ) : (
+        articles.map((post, index) => (
+          <div
+            key={index}
+            style={{
+              marginBottom: "25px",
+              paddingBottom: "20px",
+              borderBottom: "1px solid #eee"
+            }}
+          >
+            <span style={{ fontSize: "12px", color: "hotpink", letterSpacing: "1px" }}>
+              {post.category}
+            </span>
 
-          <span style={{ fontSize: "12px", color: "hotpink", letterSpacing: "1px" }}>
-            {post.category}
-          </span>
+            <h3 style={{ margin: "8px 0" }}>
+              <Link to={`/post/${post.slug}`} style={{ textDecoration: "none", color: "#111" }}>
+                {post.title}
+              </Link>
+            </h3>
 
-          <h3 style={{ margin: "8px 0" }}>
-            <Link to={`/post/${post.slug}`} style={{ textDecoration: "none", color: "#111" }}>
-              {post.title}
-            </Link>
-          </h3>
-
-          <p style={{ fontSize: "14px", color: "#555", lineHeight: "1.7" }}>
-            This nail design is part of the latest Pinterest beauty wave —
-            soft, aesthetic, viral, and highly saved across social media platforms.
-            Click to explore full inspiration →
-          </p>
-
-        </div>
-      ))}
+            <p style={{ fontSize: "14px", color: "#555", lineHeight: "1.7" }}>
+              This nail design is part of the latest Pinterest beauty wave —
+              soft, aesthetic, viral, and highly saved across social media platforms.
+              Click to explore full inspiration →
+            </p>
+          </div>
+        ))
+      )}
 
       {/* EXTRA SECTION */}
       <h2 style={{ marginTop: "50px" }}>
