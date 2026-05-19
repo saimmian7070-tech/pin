@@ -1,21 +1,34 @@
 import Header from "../components/Header";
+import { useEffect } from "react";
 
 export default function Premium() {
-  const handleSave = async () => {
-  const url = window.location.href;
-  const text = "Colorful Nail Designs Inspo ✨";
+  useEffect(() => {
+  // Ad 1
+  const s1 = document.createElement("script");
+  s1.src = "https://pl29493919.effectivecpmnetwork.com/af/27/ab/af27ab1efa32e5cefd8449076b124745.js";
+  s1.async = true;
+  document.body.appendChild(s1);
 
-  const pinterestUrl = `https://pinterest.com/pin/create/button/?url=${encodeURIComponent(url)}&description=${encodeURIComponent(text)}`;
+  // Ad 2
+  const s2 = document.createElement("script");
+  s2.src = "https://pl29493920.effectivecpmnetwork.com/6e7c5dc9b608057a86281ed16f44c582/invoke.js";
+  s2.async = true;
+  s2.setAttribute("data-cfasync", "false");
+  document.body.appendChild(s2);
 
-  window.open(pinterestUrl, "_blank");
+  // Ad 3
+  const s3 = document.createElement("script");
+  s3.src = "https://pl29493921.effectivecpmnetwork.com/a6/cc/f2/a6ccf2d7783fa8327006aae04351a47e.js";
+  s3.async = true;
+  document.body.appendChild(s3);
 
-  try {
-    await navigator.clipboard.writeText(url);
-  } catch (err) {
-    console.log("Clipboard failed");
-  }
+}, []);
 
-  window.scrollTo({ top: 0, behavior: "smooth" });
+const openAd = () => {
+  window.open(
+    "https://www.effectivecpmnetwork.com/j29z3wg48?key=21ba91547410966868eaf0e3e115757f",
+    "_blank"
+  );
 };
   return (
     <>
@@ -111,6 +124,8 @@ export default function Premium() {
 
         </section>
 
+        <div id="container-6e7c5dc9b608057a86281ed16f44c582"></div>
+
         {/* STORY 2 */}
         <section className="story-section reverse">
 
@@ -148,6 +163,8 @@ export default function Premium() {
           </div>
 
         </section>
+
+        <div id="container-6e7c5dc9b608057a86281ed16f44c582"></div>
 
         {/* IMAGE STACK */}
         <section className="image-stack">
@@ -208,6 +225,8 @@ export default function Premium() {
           </div>
 
         </section>
+
+        <div id="container-6e7c5dc9b608057a86281ed16f44c582"></div>
 
         {/* STORY 4 */}
         <section className="story-section reverse">
@@ -433,9 +452,9 @@ export default function Premium() {
             TikTok and Instagram right after.
           </p>
 
-          <button className="save-btn" onClick={handleSave}>
-          SAVE THIS INSPO →
-        </button>
+          <a href="/" className="save-btn" onClick={openAd}>
+  SAVE THIS INSPO →
+</a>
 
         </section>
 
