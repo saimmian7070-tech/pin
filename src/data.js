@@ -1,1 +1,3 @@
-export default [];
+const articles = [];
+
+export default articles;
